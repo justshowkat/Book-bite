@@ -1,0 +1,15 @@
+.home-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.search-area{
+    display: flex;
+    justify-content: space-around;
+}
+.home-search{
+    
+    padding: 10px;
+}
