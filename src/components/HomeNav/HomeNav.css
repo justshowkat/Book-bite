@@ -1,0 +1,8 @@
+.custom-link{
+    text-decoration: none;
+    color: aliceblue;
+}
+.custom-link:hover{
+    text-decoration: none;
+    color: rgb(198, 228, 255);
+}
