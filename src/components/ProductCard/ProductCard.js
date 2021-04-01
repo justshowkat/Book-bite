@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { homeContext } from "../Context/Context";
 import "./ProductCard.css";
 
 const ProductCard = (param) => {
-  const [checkOut, setCheckOut] = useState([{}])
+  const [checkOut, setCheckOut] = useContext(homeContext)
   const { name, image, author, price } = param;
   const handleBuyNow = () => {
-      const temp = {name, price, author}
-      setCheckOut(...checkOut, temp)
+      setCheckOut([...checkOut, {image, name, price, author}])
       console.log(checkOut)
   }
   return (

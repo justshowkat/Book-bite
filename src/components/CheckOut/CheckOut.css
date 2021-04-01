@@ -1,0 +1,16 @@
+.checkout-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.checkOut-card{
+    margin: 20px;
+    width: 80%;
+}
+
+.checkout-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

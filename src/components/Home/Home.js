@@ -1,11 +1,8 @@
+import { CircularProgress } from "@material-ui/core";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
-import { Route, Router, Switch } from "react-router";
-import CheckOut from "../CheckOut/CheckOut";
-import Admin from "../AdminComponent/Admin";
-import HomeNav from "../HomeNav/HomeNav";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Home.css";
 
@@ -67,6 +64,7 @@ const Home = () => {
   }, []);
   return (
     <div>
+    {!Books.length && <CircularProgress className='custom-loader' color="secondary" />}
       <div className="search-area">
         <Form inline className="home-search">
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
