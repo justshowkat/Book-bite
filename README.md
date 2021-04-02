@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# welcome to book-bite
 
 This project was created with reactjs, nodejs, mongodb, expressjs, firebase authentication [live link](https://book-bite.web.app/).
 
