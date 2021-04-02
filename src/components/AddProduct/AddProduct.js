@@ -34,7 +34,7 @@ const AddProduct = () => {
       formValues.price &&
       formValues.admin
     ) {
-      fetch("https://tiny-elephant-87232.herokuapp.com/addProduct", {
+      fetch("https://glacial-hamlet-33411.herokuapp.com/addProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -10,7 +10,7 @@ const Home = () => {
 
   const [Books, setBooks] = useState([]);
   useEffect(() => {
-    fetch('https://tiny-elephant-87232.herokuapp.com/allProducts')
+    fetch('https://glacial-hamlet-33411.herokuapp.com/allProducts')
     .then(res => res.json())
     .then(data => {
       setBooks(data)

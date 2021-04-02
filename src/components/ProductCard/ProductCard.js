@@ -17,7 +17,7 @@ const ProductCard = (param) => {
   }
   const handleDelete =(id) => {
     console.log(id)
-    fetch(`https://tiny-elephant-87232.herokuapp.com/delete/${id}`, {
+    fetch(`https://glacial-hamlet-33411.herokuapp.com/delete/${id}`, {
       method : 'DELETE'
     }).then(res => res.json)
     .then(data => console.log(data, 'deleted successfully'))
