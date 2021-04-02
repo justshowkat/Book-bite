@@ -23,7 +23,7 @@ const CheckOut = () => {
     }
     orderDetails.orderInfo.map(data => console.log(data[0]))
     
-    fetch("http://localhost:5050/addOrders", {
+    fetch("https://tiny-elephant-87232.herokuapp.com/addOrders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

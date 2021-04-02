@@ -34,7 +34,7 @@ const AddProduct = () => {
       formValues.price &&
       formValues.admin
     ) {
-      fetch("http://localhost:5050/addProduct", {
+      fetch("https://tiny-elephant-87232.herokuapp.com/addProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
