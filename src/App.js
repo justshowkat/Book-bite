@@ -13,6 +13,7 @@ import AdminNav from "./components/AdminNav/AdminNav";
 import ManageProduct from "./components/ManageProduc/ManageProduct";
 import EditProduct from "./components/EditProduct/EditProduct";
 import AddProduct from "./components/AddProduct/AddProduct";
+import Orders from "./components/Orders/Orders";
 
 function App() {
   const [checkOut, setCheckOut] = useState([])
@@ -42,6 +43,10 @@ function App() {
             <PrivateRoute path="/checkout">
               <HomeNav></HomeNav>
               <CheckOut />
+            </PrivateRoute>
+            <PrivateRoute path="/orders">
+              <HomeNav></HomeNav>
+              <Orders />
             </PrivateRoute>
             <PrivateRoute path="/singleProduct">
               <HomeNav></HomeNav>

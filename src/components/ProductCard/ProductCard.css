@@ -3,6 +3,10 @@
     margin: 20px;
 }
 
+.book-cover-image{
+    height: 390px;
+}
+
 .custom-card-name{
     font-size: 20px;
     color: rgb(255, 166, 0);

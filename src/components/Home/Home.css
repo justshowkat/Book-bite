@@ -10,8 +10,13 @@
     justify-content: space-around;
 }
 .home-search{
-    
+    display: flex;
+    justify-content: space-evenly;
     padding: 10px;
+}
+
+.search-button{
+    margin: 10px;
 }
 
 .custom-loader{

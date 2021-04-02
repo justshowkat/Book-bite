@@ -33,7 +33,6 @@ const Login = () => {
       .then((result) => {
         const logedInUser = result.user;
         setUser(logedInUser)
-        console.log(logedInUser)
         logedInUser.emailVerified && history.replace(from);
         // ...
       })

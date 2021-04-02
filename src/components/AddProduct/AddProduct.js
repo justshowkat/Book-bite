@@ -1,13 +1,14 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { homeContext } from "../Context/Context";
 import ProductCard from "../ProductCard/ProductCard";
 import "./AddProduct.css";
 
 const AddProduct = () => {
-  let bookName = "";
-  const [coverImage, setCoverImage] = useState("");
+  const [checkOut, setCheckOut, user, setUser] = useContext(homeContext);
+  let coverImage;
   const [formValue, setFormValue] = useState({
     image: "",
     bookName: "",
@@ -19,18 +20,35 @@ const AddProduct = () => {
     const bookName = document.getElementById("book-name").value;
     const authorName = document.getElementById("author-name").value;
     const price = document.getElementById("price").value;
-    console.log(bookName, authorName, price, coverImage);
-    setFormValue({
+    const formValues = {
       image: coverImage,
       bookName: bookName,
       author: authorName,
       price: price,
-    });
+      admin: user.email,
+    };
+    setFormValue(formValues);
+    if (
+      formValues.bookName &&
+      formValues.author &&
+      formValues.price &&
+      formValues.admin
+    ) {
+      fetch("http://localhost:5050/addProduct", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      }).then((res) => console.log(res));
+    } else {
+      alert('pls fill all the form before submitting it')
+    }
+
     event.preventDefault();
   };
 
   const handleImageUpload = (event) => {
-    console.log(event.target.files[0]);
     const imageData = new FormData();
     imageData.set("key", "66c71e0477f01e070f4623dfde104b99");
     imageData.append("image", event.target.files[0]);
@@ -38,22 +56,25 @@ const AddProduct = () => {
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
       .then((res) => {
-        setCoverImage(res.data.data.display_url);
+        coverImage = res.data.data.display_url;
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <div className="add-product-container">
       <form className="add-product-form">
-        
+        <label for="fname">Book Cover:</label> <br />
+        <input type="file" id="book-cover" onChange={handleImageUpload} />
+        <br />
         <label for="fname">Book name:</label> <br />
         <input
           className="custom-input-form"
           type="text"
           id="book-name"
-          placeholder="book name"
+          placeholder=" book name"
         />
         <br />
         <label for="lname">Author name:</label>
@@ -62,7 +83,7 @@ const AddProduct = () => {
           className="custom-input-form"
           type="text"
           id="author-name"
-          placeholder="author"
+          placeholder=" author"
         />
         <br />
         <label for="lname">price:</label>
@@ -71,27 +92,33 @@ const AddProduct = () => {
           className="custom-input-form"
           type="text"
           id="price"
-          placeholder="price"
+          placeholder=" price"
         />
         <br />
         <div className="form-footer">
-        <div className="form-img-section">
-        <label for="fname">Book Cover:</label> <br />
-        <input
-          
-          type="file"
-          id="book-cover"
-          onChange={handleImageUpload}
-        />
-        </div>
-        
-        <Button type="submit" variant="warning" onClick={handleSubmit}>
-          Submit
-        </Button>
+          <Button
+            type="submit"
+            variant="warning"
+            className="add-product-button"
+            onClick={handleSubmit}
+          >
+            Add New Book
+          </Button>
         </div>
       </form>
       <div className="form-view">
-       {formValue.author ? <ProductCard image={formValue.image} name={formValue.bookName} author={formValue.author} price={formValue.price} > </ProductCard> : ''}
+        {formValue.bookName ? (
+          <ProductCard
+            image={formValue.image}
+            name={formValue.bookName}
+            author={formValue.author}
+            price={formValue.price}
+          >
+            {" "}
+          </ProductCard>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
